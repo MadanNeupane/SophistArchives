@@ -1,0 +1,75 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    /*========== Colors ==========*/
+    --first-color: #f5f;
+    /*========== Font and Typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    /*========== Font Weight ==========*/
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    /*========== Margins ==========*/
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+  }
+  
+  @media screen and (min-width: 968px) {
+    :root {
+      --h2-font-size: 1.75rem;
+      --h3-font-size: 1.25rem;
+      --normal-font-size: 1rem;
+    }
+  }
+  
+  /*=============== BASE ===============*/
+  *, ::before, ::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-moz-selection {
+    color: #fff;
+    background: var(--first-color);
+  }
+  
+  ::selection {
+    color: #fff;
+    background: var(--first-color);
+  }
+  
+  body {
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+  }
+  
+  h1, h2, h3, h4, h5 {
+    font-weight: var(--font-semi-bold);
+    line-height: 1.5;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }

@@ -7,7 +7,6 @@ def index_page(request):
     videos = Video.objects.all()
     
     context = {
-        'title': 'Home Page',
         'videos': videos
     }
     

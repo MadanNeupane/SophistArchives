@@ -1,6 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'videos.css' %}">
+{% endblock css %}
 
 {% block content %}
+{% comment %} <div class="video">
+    <div class="video_container">
+        {% for video in videos %}
+        <h3 class="video_title">{{video.video_title}}</h3>
+        <video class="video__file" poster="{{video.thumbnail}}" controls="controls">
+            <source src="{{video.video_file.url}}" type="video/mp4">
+        </video>
+        <hr>
+        {% endfor %}
+    </div>
+</div> {% endcomment %}
+
+
+<div class="videos-container">
+    {% for video in videos %}
+    <div class="video-wrap">
+        <video class="video" poster="{{video.thumbnail}}" controls="controls" controlsList="nodownload">
+            <source src="{{video.video_file.url}}" type="video/mp4">
+        </video>
+        <div class="video-info">
+            <h3 class="video-title">{{video.video_title}}</h3>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}
