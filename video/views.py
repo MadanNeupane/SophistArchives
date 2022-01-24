@@ -1,4 +1,14 @@
 from django.shortcuts import render
 
+import video
+from .models import Video
+
 def index_page(request):
-    return render(request, 'index.html')
+    videos = Video.objects.all()
+    
+    context = {
+        'title': 'Home Page',
+        'videos': videos
+    }
+    
+    return render(request, 'index.html', context=context)

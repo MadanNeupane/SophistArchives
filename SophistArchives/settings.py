@@ -58,7 +58,7 @@ ROOT_URLCONF = 'SophistArchives.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path(BASE_DIR) / "components" / "templates"],
+        'DIRS': [Path(BASE_DIR) / 'components' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
