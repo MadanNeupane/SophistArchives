@@ -5,30 +5,40 @@
 {% endblock css %}
 
 {% block content %}
-{% comment %} <div class="video">
-    <div class="video_container">
-        {% for video in videos %}
-        <h3 class="video_title">{{video.video_title}}</h3>
-        <video class="video__file" poster="{{video.thumbnail}}" controls="controls">
-            <source src="{{video.video_file.url}}" type="video/mp4">
-        </video>
-        <hr>
-        {% endfor %}
+<div class="container">
+    <h2 class="title"><a href="{% url 'index_page' %}">Sophist Archives</a></h2>
+    <p>Vous êtes enregistré sous: <span class="user-name">Guest User</span></p>
+    <h4>Entrez votre recherche pour accéder aux vidéos archivées:</h4>
+    <!-- Search -->
+    <form class="search" action="{% url 'index_page' %}">
+        <input type="text" name="search" class="search-term" {% if search_query %}value="{{ search_query }}{% endif %}"
+            placeholder="Recherche..">
+        <button type="submit" class="search-button">Chercher</button>
+    </form>
+
+    <!-- Search Results -->
+    {% if search_query %}
+    <div class="search-results">
+        <p>Search Results for: &nbsp<b>{{ search_query.upper }}</b></p>
+        <p><b>{{ data | length }}</b> entries found. ACCESS LIMITED TO FIRST 3 ENTRIES.</p>
     </div>
-</div> {% endcomment %}
 
-
-<div class="videos-container">
-    {% for video in videos %}
-    <div class="video-wrap">
-        <video class="video" poster="{{video.thumbnail}}" controls="controls" controlsList="nodownload">
-            <source src="{{video.video_file.url}}" type="video/mp4">
-        </video>
-        <div class="video-info">
-            <h3 class="video-title">{{video.video_title}}</h3>
+    <!-- Videos -->
+    <div class="videos-container">
+        <div class="videos">
+            {% for video in videos %}
+            <div class="video-wrap">
+                <video class="video" poster="{{video.video_thumbnail.url}}" controls="controls" controlsList="nodownload">
+                    <source src="{{video.video_file.url}}" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3 class="video-title">{{video.video_title}}</h3>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
+    {% endif %}
+ 
 </div>
-
 {% endblock content %}

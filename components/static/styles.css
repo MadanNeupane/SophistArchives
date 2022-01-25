@@ -3,7 +3,7 @@
 
 :root {
     /*========== Colors ==========*/
-    --first-color: #f5f;
+    --first-color: #8255ff;
     /*========== Font and Typography ==========*/
     --body-font: 'Poppins', sans-serif;
     --h2-font-size: 1.25rem;
@@ -13,10 +13,9 @@
     --font-semi-bold: 600;
     --font-bold: 700;
     /*========== Margins ==========*/
+    --mb-0-25: .25rem;
     --mb-0-5: .5rem;
-    --mb-0-75: .75rem;
     --mb-1: 1rem;
-    --mb-1-5: 1.5rem;
     --mb-2: 2rem;
   }
   
@@ -40,18 +39,9 @@
     scroll-behavior: smooth;
   }
   
-  ::-moz-selection {
-    color: #fff;
-    background: var(--first-color);
-  }
-  
-  ::selection {
-    color: #fff;
-    background: var(--first-color);
-  }
-  
   body {
-    margin: var(--header-height) 0 0 0;
+    margin: 0 auto;
+    max-width: 60em;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
   }
@@ -61,15 +51,8 @@
     line-height: 1.5;
   }
   
-  ul {
-    list-style: none;
-  }
-  
-  a {
+  a, a:visited, a:active{
     text-decoration: none;
+    color: var(--first-color);
   }
   
-  img {
-    max-width: 100%;
-    height: auto;
-  }
