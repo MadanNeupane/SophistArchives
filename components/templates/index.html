@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="title"><a href="{% url 'index_page' %}">Sophist Archives</a></h2>
+    <h2 class="title"><a href="{% url 'index_page' %}">SOPHIST ARCHIVES</a></h2>
     <p>Vous êtes enregistré sous: <span class="user-name">Guest User</span></p>
     <h4>Entrez votre recherche pour accéder aux vidéos archivées:</h4>
     <!-- Search -->
@@ -19,8 +19,8 @@
     <!-- Search Results -->
     {% if search_query %}
     <div class="search-results">
-        <p>Search Results for: &nbsp<b>{{ search_query.upper }}</b></p>
-        <p><b>{{ data | length }}</b> entries found. ACCESS LIMITED TO FIRST 3 ENTRIES.</p>
+        <p>Résultats pour: &nbsp<b>{{ search_query.upper }}</b></p>
+        <p><b>{{ data | length }}</b> résultats trouvés. ACCÈS LIMITÉ AUX 3 PREMIERS.</p>
     </div>
 
     <!-- Videos -->
@@ -28,7 +28,7 @@
         <div class="videos">
             {% for video in videos %}
             <div class="video-wrap">
-                <video class="video" poster="{{video.video_thumbnail.url}}" controls="controls" controlsList="nodownload">
+                <video class="video" {% if video.video_thumbnail %} poster="{{video.video_thumbnail.url}}"{% endif %} controls="controls" controlsList="nodownload">
                     <source src="{{video.video_file.url}}" type="video/mp4">
                 </video>
                 <div class="video-info">

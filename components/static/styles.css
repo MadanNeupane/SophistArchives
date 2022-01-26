@@ -3,7 +3,8 @@
 
 :root {
     /*========== Colors ==========*/
-    --first-color: #8255ff;
+    --first-color: #2e3d8e;
+    --white-color: #fff;
     /*========== Font and Typography ==========*/
     --body-font: 'Poppins', sans-serif;
     --h2-font-size: 1.25rem;
@@ -42,17 +43,19 @@
   body {
     margin: 0 auto;
     max-width: 60em;
+    background-color: var(--first-color);
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
   }
   
   h1, h2, h3, h4, h5 {
+    color: var(--white-color);
     font-weight: var(--font-semi-bold);
     line-height: 1.5;
   }
   
-  a, a:visited, a:active{
+  a, a:visited, a:active, p {
     text-decoration: none;
-    color: var(--first-color);
+    color: var(--white-color);
   }
   
