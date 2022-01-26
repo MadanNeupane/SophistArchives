@@ -10,9 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,10 +29,8 @@ load_dotenv()
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
+DEBUG = False
+ALLOWED_HOSTS = ['sophist-archives.herokuapp.com']
 
 # Application definition
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,12 +130,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'components/media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'components/static'),
 ]
+STATICFILES_STORAGE = 'SophistArchives.storage.WhiteNoiseStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#AWS S3 Configs
 AWS_S3_REGION_NAME = 'ca-central-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 # 
@@ -147,3 +151,27 @@ AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#Sentry
+sentry_sdk.init(
+    dsn=os.environ['SENTRY_DSN'],
+    integrations=[DjangoIntegration()],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production,
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+
+    # By default the SDK will try to use the SENTRY_RELEASE
+    # environment variable, or infer a git commit
+    # SHA as release, however you may want to set
+    # something more human-readable.
+    # release="myapp@1.0.0",
+)
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
