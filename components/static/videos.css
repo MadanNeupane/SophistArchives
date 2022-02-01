@@ -8,6 +8,14 @@
 .title{
     margin: var(--mb-1);
 }
+.user-name{
+    font-weight: var(--font-semi-bold);
+}
+.logo {
+    width: 18em;
+    height: auto;
+}
+
 /* ===== SEARCH BUTTON AND RESULTS =====*/
 .search{
     max-width: 16rem;
