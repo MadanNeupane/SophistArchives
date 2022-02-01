@@ -28,7 +28,7 @@
         <div class="videos">
             {% for video in videos %}
             <div class="video-wrap">
-                <video class="video" {% if video.video_thumbnail %} poster="{{video.video_thumbnail.url}}"{% endif %} controls="controls" controlsList="nodownload">
+                <video class="video" oncontextmenu="return false;" {% if video.video_thumbnail %} poster="{{video.video_thumbnail.url}}"{% endif %} controls="controls" controlsList="nodownload">
                     <source src="{{video.video_file.url}}" type="video/mp4">
                 </video>
                 <div class="video-info">
