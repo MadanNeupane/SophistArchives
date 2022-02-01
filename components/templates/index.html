@@ -6,12 +6,13 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="title"><a href="{% url 'index_page' %}">SOPHIST ARCHIVES</a></h2>
-    <p>Vous êtes enregistré sous: <span class="user-name">Guest User</span></p>
+    <!-- <h2 class="title"><a href="{% url 'index_page' %}">SOPHIST ARCHIVES</a></h2> -->
+    <a href="{% url 'index_page' %}"><img src="{% static 'videos.css' %}" alt="Sophist Archives"></a>
+    <p>Vous êtes enregistré sous: <span class="user-name">Invité</span></p>
     <h4>Entrez votre recherche pour accéder aux vidéos archivées:</h4>
     <!-- Search -->
     <form class="search" action="{% url 'index_page' %}">
-        <input type="text" name="search" class="search-term" {% if search_query %}value="{{ search_query }}{% endif %}"
+        <input type="text" name="search" class="search-term" {% if search_query %}value="{{ search_query }}{% else %}value="Disparition"{% endif %}"
             placeholder="Recherche..">
         <button type="submit" class="search-button">Chercher</button>
     </form>
