@@ -6,12 +6,13 @@ def index_page(request):
     title = 'Home'
     data = []
     limited_videos = []
-    
+    # recently_watched = []
+
     search_query = request.GET.get('search')
 
     if search_query:
         data = Video.objects.filter(
-            Q(video_title__icontains=search_query)).distinct().order_by('video_posted_on')
+            Q(video_title__iexact=search_query)).distinct().order_by('video_posted_on')
         if len(data) > 0:
             limited_videos = data[:3]
         title = f'Search results for {search_query}'
@@ -20,7 +21,8 @@ def index_page(request):
         'data': data,
         'videos': limited_videos,
         'title': title,
-        'search_query': search_query
+        'search_query': search_query,
+        # 'recently_watched': recently_watched
     }
     
     return render(request, 'index.html', context=context)
