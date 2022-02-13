@@ -20,8 +20,12 @@
     <!-- Search Results -->
     {% if search_query %}
     <div class="search-results">
+        {% if search_query_length > 2 %}
         <p>Résultats pour: &nbsp<b>{{ search_query.upper }}</b></p>
         <p><b>{{ data | length }}</b> résultats trouvés. ACCÈS LIMITÉ AUX 3 PREMIERS.</p>
+        {% else %}
+        <p>Vous devez taper au moins 3 caractères</p>
+        {% endif %}
     </div>
 
     <!-- Videos -->
