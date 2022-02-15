@@ -64,6 +64,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: var(--mb-2);
+    }
+    .video{
+        margin: var(--mb-1);
     }
 }
