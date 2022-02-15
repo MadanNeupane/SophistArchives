@@ -60,7 +60,6 @@
 
 @media only screen and (min-width: 704px){
     .videos {
-        margin: var(--mb-1) auto;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
