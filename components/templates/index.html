@@ -36,9 +36,9 @@
                 <video class="video" oncontextmenu="return false;" {% if video.video_thumbnail %} poster="{{video.video_thumbnail.url}}"{% endif %} controls="controls" controlsList="nodownload">
                     <source src="{{video.video_file.url}}" type="video/mp4">
                 </video>
-                <div class="video-info">
+                <!-- <div class="video-info">
                     <h3 class="video-title">{{video.video_title}}</h3>
-                </div>
+                </div> -->
             </div>
             {% endfor %}
         </div>
